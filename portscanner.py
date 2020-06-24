@@ -15,13 +15,18 @@ if answer == "A":
 
     x = int(input("Port to start checking on: "))
     y = int(input("Port to check to: "))
+    print("Do you want to print closed ports?")
+    ask = raw_input()
 
     try:
-        for port in range(x,y):
+        for port in range(x,y+1):
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             result = sock.connect_ex((remoteServerIP, port))
             if result == 0:
                 print "Port {}: 	 Open".format(port)
+            else:
+                if ask == "Y":
+                    print "Port {}: 	 Closed".format(port)
             sock.close()
 
     except KeyboardInterrupt:
