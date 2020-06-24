@@ -1,5 +1,5 @@
 # port-scanner
-Simple prot scanner with 2 different functions
+Simple port scanner with 2 different functions
 
 My very first coding experience that wasn't a "Hello World". I combined two (2) different open source port scanners, that  work differently, and the user chooses what function to use each run. Links for them and what exactly I changed on them individually (besides joining them and asking for user input to decide which one to use):
 
