@@ -1,8 +1,8 @@
 import socket
 import sys
 
-print("Type A to a range of ports or B to check a specific one")
-answer = input()
+answer = input("Type A to a range of ports or B to check a specific one")
+
 if answer == "A":
 
     remoteServer    = input("Enter a remote host to scan: ")
@@ -15,14 +15,11 @@ if answer == "A":
 
     x = int(input("Port to start checking on: "))
     y = int(input("Port to check to: "))
-    print("Do you want to print closed ports? Y/N")
-    ask = input()
+    ask = input("Do you want to print closed ports? Y/N")
 
-    print("Do you want to export open ports to a txt file? Y/N")
-    exportopen = input()
+    exportopen = input("Do you want to export open ports to a txt file? Y/N")
 
-    print("Do you want to export closed ports to a txt file? Y/N")
-    exportclosed = input()
+    exportclosed = input("Do you want to export closed ports to a txt file? Y/N")
 
     if exportopen == "Y" or exportclosed == "Y":
         f = open("ports.txt", "w")
