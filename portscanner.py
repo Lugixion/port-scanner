@@ -15,10 +15,17 @@ if answer == "A":
 
     x = int(input("Port to start checking on: "))
     y = int(input("Port to check to: "))
-    print("Do you want to print closed ports?")
+    print("Do you want to print closed ports? Y/N")
     ask = raw_input()
 
-    f = open("ports.txt", "w")
+    print("Do you want to export open ports to a txt file? Y/N")
+    exportopen = raw_input()
+
+    print("Do you want to export closed ports to a txt file? Y/N")
+    exportclosed = raw_input()
+
+    if exportopen == "Y" or exportclosed == "Y":
+        f = open("ports.txt", "w")
 
     try:
         for port in range(x,y+1):
@@ -26,11 +33,13 @@ if answer == "A":
             result = sock.connect_ex((remoteServerIP, port))
             if result == 0:
                 print("Port {}: 	 Open".format(port))
-                f.write("Port {}: 	 Open".format(port) + '\n')
+                if exportopen == "Y":
+                    f.write("Port {}: 	 Open".format(port) + '\n')
             else:
                 if ask == "Y":
                     print("Port {}: 	 Closed".format(port))
-                    f.write("Port {}: 	 Closed".format(port) + '\n')
+                if exportclosed == "Y":
+                        f.write("Port {}: 	 Closed".format(port) + '\n')
             sock.close()
 
 
