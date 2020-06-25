@@ -2,27 +2,27 @@ import socket
 import sys
 
 print("Type A to a range of ports or B to check a specific one")
-answer = raw_input()
+answer = input()
 if answer == "A":
 
-    remoteServer    = raw_input("Enter a remote host to scan: ")
+    remoteServer    = input("Enter a remote host to scan: ")
     remoteServerIP  = socket.gethostbyname(remoteServer)
 
 
-    print "-" * 60
-    print "Please wait, scanning remote host", remoteServerIP
-    print "-" * 60
+    print("-" * 60)
+    print("Please wait, scanning remote host", remoteServerIP)
+    print("-" * 60)
 
     x = int(input("Port to start checking on: "))
     y = int(input("Port to check to: "))
     print("Do you want to print closed ports? Y/N")
-    ask = raw_input()
+    ask = input()
 
     print("Do you want to export open ports to a txt file? Y/N")
-    exportopen = raw_input()
+    exportopen = input()
 
     print("Do you want to export closed ports to a txt file? Y/N")
-    exportclosed = raw_input()
+    exportclosed = input()
 
     if exportopen == "Y" or exportclosed == "Y":
         f = open("ports.txt", "w")
@@ -39,25 +39,25 @@ if answer == "A":
                 if ask == "Y":
                     print("Port {}: 	 Closed".format(port))
                 if exportclosed == "Y":
-                        f.write("Port {}: 	 Closed".format(port) + '\n')
+                    f.write("Port {}: 	 Closed".format(port) + '\n')
             sock.close()
 
 
     except KeyboardInterrupt:
-        print "You pressed Ctrl+C"
+        prin("You pressed Ctrl+C")
         sys.exit()
 
     except socket.gaierror:
-        print 'Hostname could not be resolved. Exiting'
+        print('Hostname could not be resolved. Exiting')
         sys.exit()
 
     except socket.error:
-        print "Couldn't connect to server"
+        print("Couldn't connect to server")
         sys.exit()
 
 
 
-    print 'Scanning Completed '
+    print('Scanning Completed ')
 
 else:
 
