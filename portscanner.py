@@ -18,16 +18,21 @@ if answer == "A":
     print("Do you want to print closed ports?")
     ask = raw_input()
 
+    f = open("ports.txt", "w")
+
     try:
         for port in range(x,y+1):
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             result = sock.connect_ex((remoteServerIP, port))
             if result == 0:
-                print "Port {}: 	 Open".format(port)
+                print("Port {}: 	 Open".format(port))
+                f.write("Port {}: 	 Open".format(port) + '\n')
             else:
                 if ask == "Y":
-                    print "Port {}: 	 Closed".format(port)
+                    print("Port {}: 	 Closed".format(port))
+                    f.write("Port {}: 	 Closed".format(port) + '\n')
             sock.close()
+
 
     except KeyboardInterrupt:
         print "You pressed Ctrl+C"
