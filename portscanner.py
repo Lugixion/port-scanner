@@ -1,7 +1,14 @@
 import socket
 import sys
 
-answer = input("Type A to a range of ports or B to check a specific one")
+def get_valid_anser():
+    while True:
+        answer = input("Type A to a range of ports or B to check a specific one")
+        if answer in "AB":
+            return answer
+        print("Invalid input")
+
+answer = get_valid_anser()
 
 if answer == "A":
 
@@ -15,11 +22,33 @@ if answer == "A":
 
     x = int(input("Port to start checking on: "))
     y = int(input("Port to check to: "))
-    ask = input("Do you want to print closed ports? Y/N")
 
-    exportopen = input("Do you want to export open ports to a txt file? Y/N")
+    def get_valid_ask():
+        while True:
+            answer = input("Do you want to print closed ports? Y/N")
+            if answer in "YN":
+                return answer
+            print("Invalid input")
 
-    exportclosed = input("Do you want to export closed ports to a txt file? Y/N")
+    ask = get_valid_ask()
+
+    def get_valid_exportopen():
+        while True:
+            answer = input("Do you want to export open ports to a txt file? Y/N")
+            if answer in "YN":
+                return answer
+            print("Invalid input")
+
+    exportopen = get_valid_exportopen()
+
+    def get_valid_exportclosed():
+        while True:
+            answer = input("Do you want to export closed ports to a txt file? Y/N")
+            if answer in "YN":
+                return answer
+            print("Invalid input")
+
+    exportclosed = get_valid_exportclosed()
 
     if exportopen == "Y" or exportclosed == "Y":
         f = open("ports.txt", "w")
