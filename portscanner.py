@@ -70,7 +70,7 @@ if answer == "A":
 
 
     except KeyboardInterrupt:
-        prin("You pressed Ctrl+C")
+        print("You pressed Ctrl+C")
         sys.exit()
 
     except socket.gaierror:
